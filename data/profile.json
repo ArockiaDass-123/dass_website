@@ -1,0 +1,144 @@
+{
+  "name": {
+    "first": "Arockia",
+    "last": "Dass J",
+    "full": "Arockia Dass J"
+  },
+  "email": "arockiadassvinith@gmail.com",
+  "phone": "6380835701",
+  "tagline": "MERN Full-stack Developer • AI & Data Analytics • Cybersecurity Enthusiast",
+  "description": "Aspiring full-stack developer with hands-on MERN projects, SQL/Python data analysis experience, and practical exposure to AI/ML and cybersecurity simulations.",
+  "roles": {
+    "short": "Full-stack Developer",
+    "detailed": "MERN Full-stack | AI / ML | Data Analytics | Cybersecurity"
+  },
+  "location": {
+    "based": "Kodaikanal, Tamil Nadu, India",
+    "availability": "Open to opportunities"
+  },
+  "available": true,
+  "bio": "I build user-focused web applications and data-driven solutions. Trained in MERN full-stack development, experienced with React, Node.js, Express, and MongoDB, and comfortable using Python and SQL for data tasks. I also have completed virtual simulations and workshops in cybersecurity and GenAI-powered analytics.",
+  "stats": [
+    { "value": "4", "label": "Projects" },
+    { "value": "5", "label": "Certifications / Workshops" },
+    { "value": "MCA", "label": "Highest Education" }
+  ],
+  "skills": [
+    "HTML",
+    "CSS",
+    "Bootstrap",
+    "JavaScript",
+    "React.js",
+    "Node.js",
+    "Express",
+    "Python",
+    "SQLite",
+    "MongoDB",
+    "Git",
+    "AI / ML (fundamentals)",
+    "Cybersecurity (simulation)",
+    "Data Analytics",
+    "REST APIs",
+    "JWT Authentication"
+  ],
+  "experience": [
+    {
+      "id": 1,
+      "role": "Virtual Intern — Cybersecurity Simulation",
+      "company": "Deloitte | Forage",
+      "type": "Virtual",
+      "location": "Remote, Tamil Nadu",
+      "period": "May 2026",
+      "bullets": [
+        "Completed hands-on cybersecurity tasks including threat analysis and security best practices.",
+        "Designed a phishing simulation and proposed mitigation recommendations."
+      ],
+      "tech": ["Cybersecurity", "Threat Analysis", "Phishing Simulation"],
+      "desc": "Practical cybersecurity exercises focused on threat modelling and incident mitigation."
+    },
+    {
+      "id": 2,
+      "role": "GenAI Data Analytics Simulation",
+      "company": "Tata Group | Forage",
+      "type": "Virtual",
+      "location": "Remote, Tamil Nadu",
+      "period": "2026",
+      "bullets": [
+        "Performed exploratory data analysis and built AI models for customer delinquency prediction.",
+        "Produced business reports and data storytelling outputs to inform collections strategy."
+      ],
+      "tech": ["Python", "SQL", "AI/ML", "Data Visualization"],
+      "desc": "GenAI-powered analytics simulation covering EDA, model-building, and business reporting."
+    },
+    {
+      "id": 3,
+      "role": "Cybersecurity Simulation",
+      "company": "Mastercard | Forage",
+      "type": "Virtual",
+      "location": "Remote, Tamil Nadu",
+      "period": "2026",
+      "bullets": [
+        "Designed phishing email simulations to evaluate organizational vulnerability and response.",
+        "Interpreted simulation results and documented mitigation strategies."
+      ],
+      "tech": ["Phishing Simulation", "Security Assessment"],
+      "desc": "Hands-on simulation exercises for phishing detection and mitigation planning."
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "Nxt Trendz (E‑commerce Clone)",
+      "link": "https://github.com/ArockiaDass-123/NxtTrendz-updated",
+      "image": "/assets/project-artgenio1.png",
+      "tech": ["React.js", "JavaScript", "CSS", "Bootstrap", "JWT", "REST APIs"],
+      "desc": "E‑commerce clone inspired by Amazon/Flipkart with product listings, product details, and secure authentication using JWT and localStorage."
+    },
+    {
+      "id": 2,
+      "title": "Jobby App (Job Search Platform)",
+      "link": "https://github.com/ArockiaDass-123/Jobby-App-NxtWave-",
+      "image": "/assets/project-easyfolio1.png",
+      "tech": ["React.js", "JavaScript", "CSS", "Bootstrap", "JWT", "REST APIs"],
+      "desc": "Job search application with protected routes, persistent login, and job listing/details pages."
+    },
+    {
+      "id": 3,
+      "title": "Data Management & Analysis",
+      "link": "https://github.com/ArockiaDass-123/DataManagement_Assessment_usingSQL_Spreadsheets_and_Python.git",
+      "image": "/assets/project-eventflow.png",
+      "tech": ["SQLite", "Python", "SQL", "Excel"],
+      "desc": "Designed SQL schemas, executed complex queries, automated data processing with Python, and produced analytical reports using Excel."
+    },
+    {
+      "id": 4,
+      "title": "EventFlow — Event Management with AI",
+      "link": "https://mern-stack-hero-client.onrender.com/",
+      "image": "/assets/project-nxttrendz.png",
+      "tech": ["React.js", "Node.js", "MongoDB", "Python", "AI"],
+      "desc": "Full‑stack MERN event discovery and registration platform with AI recommendation features and user dashboard."
+    }
+  ],
+  "publications": [
+    {
+      "id": 1,
+      "title": "Freedom with AI Masterclass",
+      "platform": "Certificate",
+      "year": "May 2026",
+      "link": "",
+      "desc": "Completed a practical masterclass on AI tools and applications."
+    },
+    {
+      "id": 2,
+      "title": "Agentic AI Workshop",
+      "platform": "360DigiTMG",
+      "year": "2026",
+      "link": "",
+      "desc": "Workshop on agentic AI, automation, and real-time problem solving."
+    }
+  ],
+  "socials": [
+    { "label": "GitHub", "href": "https://github.com/ArockiaDass-123" },
+    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/arockia-dass-j-701153337" }
+  ]
+}

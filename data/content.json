@@ -1,0 +1,22 @@
+{
+  "site": {
+    "tagline": "Arockia Dass J — Portfolio"
+  },
+  "hero": {
+    "taglineHighlight": "MERN • AI • Data Analytics",
+    "freelanceNote": "Open to full-stack, AI, and data roles.",
+    "availableLabel": "Available for opportunities",
+    "pills": ["MERN Full-stack", "AI & Data", "Cybersecurity (sim)"],
+    "specialistStat": { "value": "MERN + AI", "label": "Focus" }
+  },
+  "interstitial": {
+    "availabilityLabel": "Availability",
+    "basedInLabel": "Based in",
+    "statLabels": ["Projects", "Certifications", "Education"]
+  },
+  "footer": {
+    "eyebrow": "Open to hiring and contract opportunities",
+    "ctaLines": ["Building user-focused", "and data-driven solutions"],
+    "ctaAccent": "Let's connect"
+  }
+}
