@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: cinematic-portfolio
+    env: node
+    plan: free
+    branch: main
+    repo: https://github.com/ArockiaDass-123/dass_website.git
+    buildCommand: npm install && npm run build
+    startCommand: npm run start -- -p $PORT
+    envVars:
+      - key: NODE_ENV
+        value: production
+    healthCheckPath: /
