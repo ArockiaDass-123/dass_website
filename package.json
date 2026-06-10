@@ -14,6 +14,7 @@
     "optimize:images": "node scripts/optimize-images.js",
     "build": "next build",
     "start": "next start",
+    "render-deploy": "node scripts/render-deploy.js",
     "lint": "eslint"
   },
   "dependencies": {
