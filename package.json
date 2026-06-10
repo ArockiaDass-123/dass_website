@@ -7,8 +7,7 @@
   "private": true,
   "author": {
     "name": "Arockia Dass",
-    "email": "arockiadassvinith@gmail.com",
-    
+    "email": "arockiadassvinith@gmail.com"
   },
   "scripts": {
     "dev": "next dev",
