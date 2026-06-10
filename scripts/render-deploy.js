@@ -113,7 +113,7 @@ async function main() {
     const startTime = Date.now();
     const timeout = 15 * 60 * 1000; // 15 minutes timeout
 
-    while (status !== 'live' && status !== 'failed' && status !== 'deactivated') {
+    while (status !== 'live' && !status.includes('failed') && status !== 'deactivated' && status !== 'canceled') {
       if (Date.now() - startTime > timeout) {
         throw new Error('Deployment timed out.');
       }
@@ -132,6 +132,24 @@ async function main() {
       console.log(`Live URL: ${serviceDetail.service.url}`);
       console.log(`Dashboard URL: https://dashboard.render.com/web/${serviceId}`);
     } else {
+      console.log(`Deployment failed with status: ${status}. Fetching build logs...`);
+      try {
+        const logs = await request('GET', `/logs?ownerId=${ownerId}&resource=${serviceId}&type=build&limit=50`);
+        console.log('Build Logs from Render:');
+        if (Array.isArray(logs)) {
+          // Render returns logs sorted in some order, let's reverse them if they are in descending order to print chronologically
+          // Actually, let's just print them
+          logs.reverse().forEach(l => {
+            console.log(l.text || l.message || JSON.stringify(l));
+          });
+        } else if (logs && logs.message) {
+          console.log(logs.message);
+        } else {
+          console.log(JSON.stringify(logs));
+        }
+      } catch (logErr) {
+        console.error('Failed to retrieve logs:', logErr.message);
+      }
       throw new Error(`Deployment ended with status: ${status}`);
     }
 
