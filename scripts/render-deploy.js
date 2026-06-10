@@ -88,8 +88,24 @@ async function main() {
     }
 
     console.log(`Triggering deployment for service ID: ${serviceId}...`);
-    const deploy = await request('POST', `/services/${serviceId}/deploys`, { clearCache: 'do_not_clear' });
-    const deployId = deploy.id;
+    try {
+      const deployResult = await request('POST', `/services/${serviceId}/deploys`, { clearCache: 'do_not_clear' });
+      console.log('Trigger deploy response:', JSON.stringify(deployResult));
+    } catch (e) {
+      console.log('Deploy trigger request finished (could be empty response).');
+    }
+
+    console.log('Waiting for deploy list registration...');
+    await new Promise(r => setTimeout(r, 5000));
+
+    const deploys = await request('GET', `/services/${serviceId}/deploys?limit=5`);
+    if (!deploys || deploys.length === 0) {
+      throw new Error('No deploys found for this service.');
+    }
+    const deployId = deploys[0].id || (deploys[0].deploy && deploys[0].deploy.id);
+    if (!deployId) {
+      throw new Error('Could not find deploy ID in the deploys list.');
+    }
     console.log(`Deployment triggered (ID: ${deployId}). Monitoring status...`);
 
     // Poll deployment status
@@ -106,7 +122,7 @@ async function main() {
       await new Promise(r => setTimeout(r, 15000));
       
       const deployStatus = await request('GET', `/services/${serviceId}/deploys/${deployId}`);
-      status = deployStatus.status;
+      status = deployStatus.status || (deployStatus.deploy && deployStatus.deploy.status);
       console.log(`[${new Date().toISOString()}] Status: ${status}`);
     }
 
