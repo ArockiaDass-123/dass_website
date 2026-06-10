@@ -6,9 +6,9 @@
   },
   "private": true,
   "author": {
-    "name": "Jyoti Sinha",
-    "email": "jyotisinha0526@gmail.com",
-    "url": "https://ctm-log-analyzer.netlify.app/"
+    "name": "Arockia Dass",
+    "email": "arockiadassvinith@gmail.com",
+    
   },
   "scripts": {
     "dev": "next dev",
