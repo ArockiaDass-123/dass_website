@@ -1,9 +1,10 @@
-import { SITE_URL } from '@/lib/siteConfig'
 import { ImageResponse } from 'next/og'
+import fs from 'fs'
+import path from 'path'
 
-export const runtime = 'edge'
+export const dynamic = 'force-static'
 
-export const alt = 'Arockia Dass | Control-M SME'
+export const alt = 'Arockia Dass | Full-stack Developer'
 
 export const size = {
   width: 1200,
@@ -13,7 +14,11 @@ export const size = {
 export const contentType = 'image/png'
 
 const ACCENT = '#f7931e'
-const photoUrl = `${SITE_URL}/assets/jyoti-about.jpeg`
+
+// Load image locally from filesystem as base64 data URL to prevent build-time network request errors
+const imagePath = path.join(process.cwd(), 'public', 'assets', 'vinith.jpg')
+const imageBuffer = fs.readFileSync(imagePath)
+const photoUrl = `data:image/jpeg;base64,${imageBuffer.toString('base64')}`
 
 export default function Image() {
   return new ImageResponse(
@@ -80,7 +85,7 @@ export default function Image() {
                 textTransform: 'uppercase',
               }}
             >
-              CONTROL-M SME
+              MERN FULL-STACK
             </span>
           </div>
 
@@ -125,8 +130,8 @@ export default function Image() {
               marginBottom: 34,
             }}
           >
-            Enterprise workload automation, production support, and
-            AI-assisted operations for critical systems.
+            MERN full-stack development, AI & data analytics, and
+            cybersecurity simulations.
           </div>
 
           {/* TAGS */}
@@ -139,10 +144,10 @@ export default function Image() {
             }}
           >
             {[
-              'Control-M',
-              'L3 Support',
-              'Automation',
-              'Agentic AI',
+              'React.js',
+              'Node.js',
+              'Python',
+              'AI/ML',
             ].map((tag) => (
               <div
                 key={tag}
@@ -169,9 +174,9 @@ export default function Image() {
             }}
           >
             {[
-              ['15+', 'Years'],
-              ['8+', 'Roles'],
-              ['CTM + AI', 'Specialist'],
+              ['4', 'Projects'],
+              ['5', 'Certs'],
+              ['MCA', 'Education'],
             ].map(([value, label]) => (
               <div
                 key={label}

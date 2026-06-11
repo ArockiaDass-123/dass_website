@@ -27,32 +27,34 @@ const dancing = Dancing_Script({
 });
 
 const description =
-  'Control-M SME and production support specialist with 15+ years across enterprise workload automation, ITSM, RPA, and AI-assisted operations.';
+  'Aspiring full-stack developer with hands-on MERN projects, SQL/Python data analysis experience, and practical exposure to AI/ML and cybersecurity simulations.';
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Arockia Dass | Control-M SME',
+    default: 'Arockia Dass | Full-stack Developer',
     template: '%s | Arockia Dass',
   },
   description,
   keywords: [
-    'Jyoti Sinha',
-    'Control-M SME',
-    'Control-M Administrator',
-    'Production Support',
-    'Application L3 Support',
-    'Agentic AI Automation',
-    'Batch Scheduling',
-    'ITIL',
-    'UiPath RPA',
-    'Singapore',
+    'Arockia Dass J',
+    'Arockia Dass',
+    'Full-stack Developer',
+    'MERN Developer',
+    'React.js Developer',
+    'Node.js Developer',
+    'AI & Data Analytics',
+    'Cybersecurity Simulation',
+    'Web Development Portfolio',
+    'Kodaikanal',
+    'Tamil Nadu',
+    'India',
   ],
   authors: [{ name: 'Arockia Dass', url: SITE_URL }],
   creator: 'Arockia Dass',
   openGraph: {
     type: 'website',
-    locale: 'en_SG',
+    locale: 'en_IN',
     url: SITE_URL,
     
     description,
@@ -61,13 +63,13 @@ export const metadata = {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'Arockia Dass | Control-M SME Portfolio',
+        alt: 'Arockia Dass | Full-stack Developer Portfolio',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Arockia Dass | Control-M SME',
+    title: 'Arockia Dass | Full-stack Developer',
     description,
     images: ['/opengraph-image'],
   },
@@ -119,9 +121,9 @@ export default function RootLayout({ children }) {
               name: 'Arockia Dass',
               url: SITE_URL,
               email: 'arockiadassvinith@gmail.com',
-              jobTitle: 'Control-M SME',
+              jobTitle: 'Full-stack Developer',
               sameAs: [
-                'https://ctm-log-analyzer.netlify.app/',
+                'https://github.com/ArockiaDass-123',
                 'https://www.linkedin.com/in/arockia-dass-j-701153337/',
               ],
             }),

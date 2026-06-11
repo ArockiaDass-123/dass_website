@@ -65,26 +65,56 @@ async function main() {
 
     if (service) {
       serviceId = service.service.id;
-      console.log(`Found existing service: ${SERVICE_NAME} (ID: ${serviceId})`);
+      console.log(`Found existing service: ${SERVICE_NAME} (ID: ${serviceId}, Type: ${service.service.type})`);
+      
+      if (service.service.type !== 'static_site') {
+        console.log(`Existing service is of type "${service.service.type}", but we need "static_site". Deleting and recreating...`);
+        try {
+          await request('DELETE', `/services/${serviceId}`);
+          console.log('Existing service deleted successfully.');
+          service = null;
+        } catch (delErr) {
+          console.error(`Failed to delete service: ${delErr.message}`);
+          throw delErr;
+        }
+      }
+    }
+
+    if (service) {
+      console.log(`Updating configuration for existing static site service ID: ${serviceId}...`);
+      try {
+        await request('PATCH', `/services/${serviceId}`, {
+          serviceDetails: {
+            staticSiteDetails: {
+              buildCommand: 'npm install --include=dev && npm run build',
+              publishPath: 'out'
+            }
+          }
+        });
+        console.log('Service configuration updated successfully.');
+      } catch (patchErr) {
+        console.error(`Failed to update service config: ${patchErr.message}`);
+      }
     } else {
-      console.log(`Service "${SERVICE_NAME}" not found. Creating a new Web Service...`);
+      console.log(`Service "${SERVICE_NAME}" not found or deleted. Creating a new Static Site...`);
       const payload = {
-        type: 'web_service',
+        type: 'static_site',
         name: SERVICE_NAME,
         ownerId: ownerId,
         repo: REPO_URL,
         autoDeploy: 'yes',
         branch: 'main',
         serviceDetails: {
-          runtime: 'node',
-          buildCommand: 'npm install && npm run build',
-          startCommand: 'npm run start -- -p $PORT'
+          staticSiteDetails: {
+            buildCommand: 'npm install --include=dev && npm run build',
+            publishPath: 'out'
+          }
         }
       };
       const response = await request('POST', '/services', payload);
       serviceId = response.service.id;
       isNew = true;
-      console.log(`Created new Web Service: ${SERVICE_NAME} (ID: ${serviceId})`);
+      console.log(`Created new Static Site: ${SERVICE_NAME} (ID: ${serviceId})`);
     }
 
     console.log(`Triggering deployment for service ID: ${serviceId}...`);
@@ -129,7 +159,7 @@ async function main() {
     if (status === 'live') {
       console.log('Deployment successful!');
       const serviceDetail = await request('GET', `/services/${serviceId}`);
-      console.log(`Live URL: ${serviceDetail.service.url}`);
+      console.log(`Live URL: ${serviceDetail.serviceDetails.url}`);
       console.log(`Dashboard URL: https://dashboard.render.com/web/${serviceId}`);
     } else {
       console.log(`Deployment failed with status: ${status}. Fetching build logs...`);
