@@ -1,6 +1,5 @@
 services:
-  - type: web
+  - type: static_site
     name: cinematic-portfolio
-    runtime: static
     buildCommand: npm install --include=dev && npm run build
-    staticPublishPath: ./out
+    staticPublishPath: ./public

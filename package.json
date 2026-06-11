@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "next dev",
     "optimize:images": "node scripts/optimize-images.js",
-    "build": "next build",
+    "build": "next build && node scripts/postbuild.js",
     "start": "next start",
     "render-deploy": "node scripts/render-deploy.js",
     "lint": "eslint"
