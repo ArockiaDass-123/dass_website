@@ -7,6 +7,27 @@ import { FaGithub, FaLinkedinIn, FaMedium, FaInstagram, FaYoutube } from 'react-
 import profile from '@/data/profile.json'
 import styles from '@/styles/sections/AboutSection.module.css'
 
+function useISTClock() {
+  const [time, setTime] = useState('')
+  useEffect(() => {
+    function tick() {
+      setTime(
+        new Date().toLocaleTimeString('en-IN', {
+          timeZone: 'Asia/Kolkata',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: true,
+        }).toUpperCase()
+      )
+    }
+    tick()
+    const id = setInterval(tick, 1000)
+    return () => clearInterval(id)
+  }, [])
+  return time
+}
+
 const BIO      = profile.bio
 const WHO_ITEMS = profile.skills
 
@@ -20,6 +41,7 @@ export default function AboutSection() {
   const contentRef  = useRef(null)
   const socialsRef  = useRef(null)
   const intervalRef = useRef(null)
+  const istTime     = useISTClock()
 
   const [typed, setTyped] = useState(0)
   const [done,  setDone]  = useState(false)
@@ -113,6 +135,13 @@ export default function AboutSection() {
             </a>
           ))}
         </div>
+
+        {/* IST live clock */}
+        {istTime && (
+          <p className={styles.istClock}>
+            🇮🇳 IST {istTime}
+          </p>
+        )}
       </div>
 
       {/* ── Right: content ───────────────────────────── */}

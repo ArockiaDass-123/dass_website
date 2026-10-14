@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, Fragment } from 'react'
+import { useEffect, useRef, useState, Fragment } from 'react'
 import Image from 'next/image'
 import { FaGithub, FaLinkedinIn, FaInstagram } from 'react-icons/fa'
 import { FiArrowUpRight } from 'react-icons/fi'
@@ -27,6 +27,27 @@ function splitTagline(text, highlight) {
   }, [])
 }
 
+function useISTClock() {
+  const [time, setTime] = useState('')
+  useEffect(() => {
+    function tick() {
+      setTime(
+        new Date().toLocaleTimeString('en-IN', {
+          timeZone: 'Asia/Kolkata',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: true,
+        })
+      )
+    }
+    tick()
+    const id = setInterval(tick, 1000)
+    return () => clearInterval(id)
+  }, [])
+  return time
+}
+
 export default function HeroSection() {
   const sectionRef     = useRef(null)
   const greetRef       = useRef(null)
@@ -39,6 +60,7 @@ export default function HeroSection() {
   const taglineCardRef = useRef(null)
   const availCardRef   = useRef(null)
   const socialRef      = useRef(null)
+  const istTime        = useISTClock()
       
   function handleViewProjects() {
     const scroller = document.querySelector('main')
@@ -180,6 +202,9 @@ export default function HeroSection() {
             </div>
             <p className={styles.locationLine}>Based in {profile.location.based}</p>
             <p className={styles.locationLine}>Available {profile.location.availability}</p>
+            <p className={styles.locationLine} style={{ fontVariantNumeric: 'tabular-nums', letterSpacing: '0.02em' }}>
+              🇮🇳 IST {istTime}
+            </p>
           </div>
         )}
       </div>

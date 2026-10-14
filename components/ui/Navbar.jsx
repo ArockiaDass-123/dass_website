@@ -24,7 +24,7 @@ const NAV_ITEMS = [
 
 function getIST() {
   return new Date().toLocaleTimeString('en-IN', {
-    timeZone: 'Asia/Singapore',
+    timeZone: 'Asia/Kolkata',
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit',
@@ -92,7 +92,7 @@ export default function Navbar() {
   return (
     <>
       <header ref={headerRef} className={`${styles.header} ${onIntro ? styles.introMode : ''} ${onDark ? styles.darkMode : ''}`}>
-        <span className={styles.time}>SINGAPORE TIME - {time}</span>
+        <span className={styles.time}>🇮🇳 INDIA TIME (IST) — {time}</span>
 
         <NavigationMenu className={styles.navMenu}>
           <NavigationMenuList className="flex gap-6">
