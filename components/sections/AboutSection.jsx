@@ -102,7 +102,7 @@ export default function AboutSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className={styles.section}>
+    <section id="about" ref={sectionRef} className={styles.section}>
 
       {/* ── Left: photo + signature + socials ───────── */}
       <div ref={photoRef} className={styles.photoCol}>

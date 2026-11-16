@@ -13,6 +13,19 @@
   overflow: hidden;
 }
 
+/* ─── Hero Background ────────────────────────────────────── */
+.heroBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.heroBgImg {
+  object-fit: cover;
+  object-position: center;
+}
+
 /* ─── Photo ─────────────────────────────────────────────── */
 .photo {
   position: absolute;

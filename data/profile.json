@@ -6,7 +6,7 @@
   },
   "email": "arockiadassvinith@gmail.com",
   "phone": "6380835701",
-  "tagline": "MERN Full-stack Developer • AI & Data Analytics • Cybersecurity Enthusiast",
+  "tagline": " • Freelancer • MERN-stack Developer • AI & Data Analytics • Cybersecurity Enthusiast",
   "description": "Aspiring full-stack developer with hands-on MERN projects, SQL/Python data analysis experience, and practical exposure to AI/ML and cybersecurity simulations.",
   "roles": {
     "short": "Full-stack Developer",
@@ -19,9 +19,18 @@
   "available": true,
   "bio": "I build user-focused web applications and data-driven solutions. Trained in MERN full-stack development, experienced with React, Node.js, Express, and MongoDB, and comfortable using Python and SQL for data tasks. I also have completed virtual simulations and workshops in cybersecurity and GenAI-powered analytics.",
   "stats": [
-    { "value": "4", "label": "Projects" },
-    { "value": "5", "label": "Certifications / Workshops" },
-    { "value": "MCA", "label": "Highest Education" }
+    {
+      "value": "24+",
+      "label": "Projects"
+    },
+    {
+      "value": "5",
+      "label": "Certifications / Workshops"
+    },
+    {
+      "value": "MCA",
+      "label": "Highest Education"
+    }
   ],
   "skills": [
     "AI Developer",
@@ -46,6 +55,52 @@
   "experience": [
     {
       "id": 1,
+      "role": "AI Apprentice",
+      "company": "EC Group",
+      "type": "NATS Scheme",
+      "location": "Chennai, Tamil Nadu, India",
+      "period": "Last 5 Months",
+      "periodEnd": "Present",
+      "bullets": [
+        "Working as an AI Apprentice under the National Apprenticeship Training Scheme (NATS) at EC Group, Chennai.",
+        "Hands-on development and implementation of Artificial Intelligence and machine learning workflows.",
+        "Collaborating with enterprise engineering teams on prompt design, AI modules, and modern software.",
+        "Contributing to end-to-end software development, debugging, testing, and production optimization."
+      ],
+      "tech": [
+        "Artificial Intelligence",
+        "Python",
+        "Machine Learning",
+        "Prompt Engineering",
+        "Software Engineering"
+      ],
+      "desc": "AI Apprentice under the Government of India NATS scheme at EC Group, Chennai, building modern AI solutions."
+    },
+    {
+      "id": 2,
+      "role": "Freelance Developer & AI Learner",
+      "company": "Freelance",
+      "type": "Freelance",
+      "location": "Kodaikanal, Tamil Nadu, India",
+      "period": "2024",
+      "periodEnd": "Present",
+      "bullets": [
+        "Working as an active Freelance Developer building responsive, user-friendly full-stack web applications.",
+        "Continuous self-directed AI Learner exploring LLMs, agentic workflows, and RAG architectures.",
+        "Delivering client-focused solutions based on custom requirements with modern web frameworks.",
+        "Managing full software lifecycle including UI development, API integrations, debugging, and cloud deployment."
+      ],
+      "tech": [
+        "React.js",
+        "Node.js",
+        "Full-Stack",
+        "AI Learner",
+        "Client Solutions"
+      ],
+      "desc": "Independent freelance developer and active AI learner delivering custom web applications and exploring modern AI."
+    },
+    {
+      "id": 3,
       "role": "Virtual Intern — Cybersecurity Simulation",
       "company": "Deloitte | Forage",
       "type": "Virtual",
@@ -55,11 +110,15 @@
         "Completed hands-on cybersecurity tasks including threat analysis and security best practices.",
         "Designed a phishing simulation and proposed mitigation recommendations."
       ],
-      "tech": ["Cybersecurity", "Threat Analysis", "Phishing Simulation"],
+      "tech": [
+        "Cybersecurity",
+        "Threat Analysis",
+        "Phishing Simulation"
+      ],
       "desc": "Practical cybersecurity exercises focused on threat modelling and incident mitigation."
     },
     {
-      "id": 2,
+      "id": 4,
       "role": "GenAI Data Analytics Simulation",
       "company": "Tata Group | Forage",
       "type": "Virtual",
@@ -69,11 +128,16 @@
         "Performed exploratory data analysis and built AI models for customer delinquency prediction.",
         "Produced business reports and data storytelling outputs to inform collections strategy."
       ],
-      "tech": ["Python", "SQL", "AI/ML", "Data Visualization"],
+      "tech": [
+        "Python",
+        "SQL",
+        "AI/ML",
+        "Data Visualization"
+      ],
       "desc": "GenAI-powered analytics simulation covering EDA, model-building, and business reporting."
     },
     {
-      "id": 3,
+      "id": 5,
       "role": "Cybersecurity Simulation",
       "company": "Mastercard | Forage",
       "type": "Virtual",
@@ -83,42 +147,416 @@
         "Designed phishing email simulations to evaluate organizational vulnerability and response.",
         "Interpreted simulation results and documented mitigation strategies."
       ],
-      "tech": ["Phishing Simulation", "Security Assessment"],
+      "tech": [
+        "Phishing Simulation",
+        "Security Assessment"
+      ],
       "desc": "Hands-on simulation exercises for phishing detection and mitigation planning."
     }
   ],
   "projects": [
     {
       "id": 1,
-      "title": "Nxt Trendz (E‑commerce Clone)",
-      "link": "https://github.com/ArockiaDass-123/NxtTrendz-updated",
-      "image": "/assets/project-artgenio1.png",
-      "tech": ["React.js", "JavaScript", "CSS", "Bootstrap", "JWT", "REST APIs"],
-      "desc": "E‑commerce clone inspired by Amazon/Flipkart with product listings, product details, and secure authentication using JWT and localStorage."
+      "title": "Learning Companion AI",
+      "link": "https://github.com/ArockiaDass-123/Learning-Companion-AI",
+      "github": "https://github.com/ArockiaDass-123/Learning-Companion-AI",
+      "live": "",
+      "image": "/assets/projects/ai-companion.png",
+      "tech": [
+        "TypeScript",
+        "Next.js",
+        "AI",
+        "OpenAI",
+        "Tailwind"
+      ],
+      "shortDesc": "Personalized AI companion tailored for adaptive learning pathways and study support.",
+      "desc": "An intelligent learning companion leveraging generative AI to provide interactive, contextual study assistance and personalized explanations."
     },
     {
       "id": 2,
-      "title": "Jobby App (Job Search Platform)",
-      "link": "https://github.com/ArockiaDass-123/Jobby-App-NxtWave-",
-      "image": "/assets/project-easyfolio1.png",
-      "tech": ["React.js", "JavaScript", "CSS", "Bootstrap", "JWT", "REST APIs"],
-      "desc": "Job search application with protected routes, persistent login, and job listing/details pages."
+      "title": "TuterMind — RAG AI Tutor",
+      "link": "https://github.com/ArockiaDass-123/TuterMind-RAG",
+      "github": "https://github.com/ArockiaDass-123/TuterMind-RAG",
+      "live": "",
+      "image": "/assets/projects/rag-knowledge.png",
+      "tech": [
+        "Python",
+        "RAG",
+        "LangChain",
+        "Vector DB",
+        "AI"
+      ],
+      "shortDesc": "Retrieval-Augmented Generation tutoring system answering domain-specific queries accurately.",
+      "desc": "Advanced RAG architecture extracting and synthesizing accurate study materials and educational documents in real-time."
     },
     {
       "id": 3,
-      "title": "Data Management & Analysis",
-      "link": "https://github.com/ArockiaDass-123/DataManagement_Assessment_usingSQL_Spreadsheets_and_Python.git",
-      "image": "/assets/project-eventflow.png",
-      "tech": ["SQLite", "Python", "SQL", "Excel"],
-      "desc": "Designed SQL schemas, executed complex queries, automated data processing with Python, and produced analytical reports using Excel."
+      "title": "Message Scheduler",
+      "link": "https://message-scheduler01.vercel.app",
+      "github": "https://github.com/ArockiaDass-123/message-scheduler01",
+      "live": "https://message-scheduler01.vercel.app",
+      "image": "/assets/projects/message-scheduler.png",
+      "tech": [
+        "TypeScript",
+        "React",
+        "Node.js",
+        "Cron",
+        "Vercel"
+      ],
+      "shortDesc": "Automated communication scheduling tool with queue processing and status tracking.",
+      "desc": "Full-stack message scheduling platform allowing users to schedule, automate, and dispatch communications seamlessly."
     },
     {
       "id": 4,
-      "title": "EventFlow — Event Management with AI",
-      "link": "https://mern-stack-hero-client.onrender.com/",
-      "image": "/assets/project-nxttrendz.png",
-      "tech": ["React.js", "Node.js", "MongoDB", "Python", "AI"],
-      "desc": "Full‑stack MERN event discovery and registration platform with AI recommendation features and user dashboard."
+      "title": "KaptureFinance AI",
+      "link": "https://github.com/ArockiaDass-123/KaptureFinanceAI",
+      "github": "https://github.com/ArockiaDass-123/KaptureFinanceAI",
+      "live": "",
+      "image": "/assets/projects/fintech-finance.jpg",
+      "tech": [
+        "JavaScript",
+        "React",
+        "AI",
+        "Finance API",
+        "Charts"
+      ],
+      "shortDesc": "Financial intelligence and analytics dashboard powered by AI insights.",
+      "desc": "AI-enhanced personal finance assistant analyzing cash flow patterns, budgeting metrics, and intelligent financial summaries."
+    },
+    {
+      "id": 5,
+      "title": "AI Research Knowledge Assistant",
+      "link": "https://github.com/ArockiaDass-123/AI-Research-Knowledge-Assistant",
+      "github": "https://github.com/ArockiaDass-123/AI-Research-Knowledge-Assistant",
+      "live": "",
+      "image": "/assets/projects/rag-knowledge.png",
+      "tech": [
+        "Python",
+        "FastAPI",
+        "RAG",
+        "LLM",
+        "Embeddings"
+      ],
+      "shortDesc": "Automated paper summarization and vector knowledge query assistant.",
+      "desc": "Research assistant capable of parsing technical papers, indexing content into vector stores, and answering multi-step questions."
+    },
+    {
+      "id": 6,
+      "title": "Quiz Generator RAG",
+      "link": "https://github.com/ArockiaDass-123/QuizGeneratorRAG",
+      "github": "https://github.com/ArockiaDass-123/QuizGeneratorRAG",
+      "live": "",
+      "image": "/assets/projects/rag-knowledge.png",
+      "tech": [
+        "Python",
+        "LangChain",
+        "RAG",
+        "NLP",
+        "Streamlit"
+      ],
+      "shortDesc": "Automated quiz and assessment generator powered by document embeddings.",
+      "desc": "Upload documents or notes to automatically generate multiple-choice assessments, quizzes, and answer keys."
+    },
+    {
+      "id": 7,
+      "title": "AI ATS Resume Analyzer",
+      "link": "https://github.com/ArockiaDass-123/AI-ATS-Resume",
+      "github": "https://github.com/ArockiaDass-123/AI-ATS-Resume",
+      "live": "",
+      "image": "/assets/projects/ats-resume.jpg",
+      "tech": [
+        "TypeScript",
+        "React",
+        "AI",
+        "PDF Parser",
+        "Tailwind"
+      ],
+      "shortDesc": "Smart ATS compatibility scanner scoring resumes against job descriptions.",
+      "desc": "Automated applicant tracking system evaluating resume-job alignment, keyword matches, and structural feedback."
+    },
+    {
+      "id": 8,
+      "title": "Mini CRM Platform",
+      "link": "https://mini-crm-eosin-nu.vercel.app",
+      "github": "https://github.com/ArockiaDass-123/mini-CRM",
+      "live": "https://mini-crm-eosin-nu.vercel.app",
+      "image": "/assets/projects/mini-crm.png",
+      "tech": [
+        "JavaScript",
+        "React",
+        "Node.js",
+        "Express",
+        "Vercel"
+      ],
+      "shortDesc": "Lightweight CRM managing customer pipelines, contact histories, and deal statuses.",
+      "desc": "Modern customer relationship management tool with interactive lead boards, status pipelines, and contact organization."
+    },
+    {
+      "id": 9,
+      "title": "EventFlow — Event Platform",
+      "link": "https://mern-stack-hero-accessment.vercel.app",
+      "github": "https://github.com/ArockiaDass-123/MERN-Stack-Hero-accessment",
+      "live": "https://mern-stack-hero-accessment.vercel.app",
+      "image": "/assets/projects/event-stage.png",
+      "tech": [
+        "React.js",
+        "Node.js",
+        "MongoDB",
+        "Express",
+        "Vercel"
+      ],
+      "shortDesc": "Full-stack MERN event discovery and registration platform with user dashboard.",
+      "desc": "Full-stack event discovery and ticketing platform featuring user auth, event creation, attendee tracking, and responsive UI."
+    },
+    {
+      "id": 10,
+      "title": "Nxt Trendz (E‑commerce)",
+      "link": "https://github.com/ArockiaDass-123/NxtTrendz-updated",
+      "github": "https://github.com/ArockiaDass-123/NxtTrendz-updated",
+      "live": "",
+      "image": "/assets/projects/ecommerce-nxttrendz.png",
+      "tech": [
+        "React.js",
+        "JavaScript",
+        "JWT",
+        "REST APIs",
+        "Bootstrap"
+      ],
+      "shortDesc": "E‑commerce platform with product catalogs, shopping cart, and secure JWT authentication.",
+      "desc": "E‑commerce clone inspired by Amazon/Flipkart with product listings, product details, and secure authentication using JWT and localStorage."
+    },
+    {
+      "id": 11,
+      "title": "Jobby App (Job Search)",
+      "link": "https://jobby-app-nxt-wave.vercel.app",
+      "github": "https://github.com/ArockiaDass-123/Jobby-App-NxtWave-",
+      "live": "https://jobby-app-nxt-wave.vercel.app",
+      "image": "/assets/projects/job-search.png",
+      "tech": [
+        "React.js",
+        "JavaScript",
+        "JWT",
+        "REST APIs",
+        "CSS"
+      ],
+      "shortDesc": "Job search portal featuring role filtering, salary ranges, and protected routes.",
+      "desc": "Job search application with protected routes, search filters, persistent authentication, and detailed job specification pages."
+    },
+    {
+      "id": 12,
+      "title": "Content Management System (CMS)",
+      "link": "https://github.com/ArockiaDass-123/Content-Management-System-CMS-",
+      "github": "https://github.com/ArockiaDass-123/Content-Management-System-CMS-",
+      "live": "",
+      "image": "/assets/projects/cms-publishing.png",
+      "tech": [
+        "TypeScript",
+        "React",
+        "Node.js",
+        "REST APIs",
+        "Tailwind"
+      ],
+      "shortDesc": "Modular content management system for digital publishing and article curation.",
+      "desc": "Full-featured CMS platform supporting markdown drafting, role-based access, publishing workflows, and media management."
+    },
+    {
+      "id": 13,
+      "title": "IPL Dashboard App",
+      "link": "https://enhancement-of-ipl-dashboard-app-wo.vercel.app",
+      "github": "https://github.com/ArockiaDass-123/Enhancement-of-IPL-Dashboard-App",
+      "live": "https://enhancement-of-ipl-dashboard-app-wo.vercel.app",
+      "image": "/assets/projects/ipl-cricket.png",
+      "tech": [
+        "React.js",
+        "JavaScript",
+        "REST APIs",
+        "Vercel",
+        "CSS"
+      ],
+      "shortDesc": "Interactive cricket analytics dashboard tracking franchise standings and match data.",
+      "desc": "Comprehensive dashboard delivering live team stats, previous match histories, and team win/loss ratios."
+    },
+    {
+      "id": 14,
+      "title": "Restaurant Discovery App",
+      "link": "https://enhancement-of-restaurant-app-nine.vercel.app",
+      "github": "https://github.com/ArockiaDass-123/Enhancement-of-Restaurant-App",
+      "live": "https://enhancement-of-restaurant-app-nine.vercel.app",
+      "image": "/assets/projects/restaurant-food.jpg",
+      "tech": [
+        "React.js",
+        "JavaScript",
+        "REST APIs",
+        "Cart State",
+        "Vercel"
+      ],
+      "shortDesc": "Digital food ordering app with dynamic menus, cart management, and payment states.",
+      "desc": "Modern restaurant app featuring categorized dish filtering, quantity counters, and persistent checkout states."
+    },
+    {
+      "id": 15,
+      "title": "Web Commerce Store",
+      "link": "https://e-commerce-website-thvi.vercel.app",
+      "github": "https://github.com/ArockiaDass-123/Web-Commerce",
+      "live": "https://e-commerce-website-thvi.vercel.app",
+      "image": "/assets/projects/ecommerce-nxttrendz.png",
+      "tech": [
+        "JavaScript",
+        "React",
+        "Tailwind",
+        "Cart State",
+        "Vercel"
+      ],
+      "shortDesc": "Modern e-commerce storefront with filtering, product showcase, and checkout.",
+      "desc": "Responsive e-commerce storefront built with clean UI components, instant search, and seamless checkout workflow."
+    },
+    {
+      "id": 16,
+      "title": "Data Management & Analytics",
+      "link": "https://github.com/ArockiaDass-123/DataManagement_Assessment_usingSQL_Spreadsheets_and_Python",
+      "github": "https://github.com/ArockiaDass-123/DataManagement_Assessment_usingSQL_Spreadsheets_and_Python",
+      "live": "",
+      "image": "/assets/projects/data-analytics-sql.png",
+      "tech": [
+        "Python",
+        "SQL",
+        "SQLite",
+        "Excel",
+        "Data Viz"
+      ],
+      "shortDesc": "Relational schema design, automated Python analytics pipelines, and structured reports.",
+      "desc": "Designed SQL schemas, executed complex analytical queries, automated data processing with Python, and produced dashboards."
+    },
+    {
+      "id": 17,
+      "title": "SPA User Management System",
+      "link": "https://github.com/ArockiaDass-123/-SPA-User-Management-Records-System",
+      "github": "https://github.com/ArockiaDass-123/-SPA-User-Management-Records-System",
+      "live": "",
+      "image": "/assets/projects/mini-crm.png",
+      "tech": [
+        "TypeScript",
+        "React",
+        "Node.js",
+        "PostgreSQL",
+        "RBAC"
+      ],
+      "shortDesc": "Single Page Application with role-based access control and async record management.",
+      "desc": "Enterprise user records portal featuring role-based access permissions, asynchronous CRUD operations, and data validation."
+    },
+    {
+      "id": 18,
+      "title": "Nxt Watch Streaming",
+      "link": "https://github.com/ArockiaDass-123/Nxt-Watch",
+      "github": "https://github.com/ArockiaDass-123/Nxt-Watch",
+      "live": "",
+      "image": "/assets/projects/video-streaming.png",
+      "tech": [
+        "React.js",
+        "JavaScript",
+        "Context API",
+        "Theme Toggle",
+        "REST APIs"
+      ],
+      "shortDesc": "YouTube-inspired video platform with light/dark theme, trending clips, and saved videos.",
+      "desc": "Video streaming application featuring search functionality, category tabs, user authentication, and global theme support."
+    },
+    {
+      "id": 19,
+      "title": "Daily Mood Tracker",
+      "link": "https://github.com/ArockiaDass-123/Daily-Mood-Tracker-web-application-",
+      "github": "https://github.com/ArockiaDass-123/Daily-Mood-Tracker-web-application-",
+      "live": "",
+      "image": "/assets/projects/mood-tracker.png",
+      "tech": [
+        "React.js",
+        "JavaScript",
+        "REST APIs",
+        "Protected Routes",
+        "CSS"
+      ],
+      "shortDesc": "Mental health monitoring app recording emotional patterns over time.",
+      "desc": "Web app designed to help users log daily feelings, visualize emotional trends, and review historical mood data."
+    },
+    {
+      "id": 20,
+      "title": "Credit Card Fraud Detection",
+      "link": "https://github.com/ArockiaDass-123/credit_card_fraud_detection-",
+      "github": "https://github.com/ArockiaDass-123/credit_card_fraud_detection-",
+      "live": "",
+      "image": "/assets/projects/fraud-detection.png",
+      "tech": [
+        "Python",
+        "Machine Learning",
+        "Scikit-Learn",
+        "Data Analytics"
+      ],
+      "shortDesc": "Classification pipeline identifying fraudulent transactions with ML models.",
+      "desc": "Applied feature engineering, anomaly detection, and classification algorithms on financial transaction datasets."
+    },
+    {
+      "id": 21,
+      "title": "Age & Gender Detection",
+      "link": "https://github.com/ArockiaDass-123/Age-and-Gender-Detection",
+      "github": "https://github.com/ArockiaDass-123/Age-and-Gender-Detection",
+      "live": "",
+      "image": "/assets/projects/facial-recognition.png",
+      "tech": [
+        "Python",
+        "OpenCV",
+        "Deep Learning",
+        "Computer Vision"
+      ],
+      "shortDesc": "Real-time facial analysis classifying demographic groups with deep learning.",
+      "desc": "Computer vision model utilizing convolutional neural networks to predict age ranges and gender from video and photo inputs."
+    },
+    {
+      "id": 22,
+      "title": "Cyber Attack Simulation",
+      "link": "https://github.com/ArockiaDass-123/Cyber-Attack-Simulation-project",
+      "github": "https://github.com/ArockiaDass-123/Cyber-Attack-Simulation-project",
+      "live": "",
+      "image": "/assets/projects/cyber-attack.png",
+      "tech": [
+        "JavaScript",
+        "Cybersecurity",
+        "Network Sim",
+        "Phishing Lab"
+      ],
+      "shortDesc": "Educational lab simulating common web vulnerabilities and defensive countermeasures.",
+      "desc": "Interactive demonstration platform illustrating threat vectors like phishing, XSS, and SQL injection in isolated environments."
+    },
+    {
+      "id": 23,
+      "title": "Blockchain Anti-Counterfeit",
+      "link": "https://github.com/ArockiaDass-123/fake-product-detection-using-blackChain-tecnology",
+      "github": "https://github.com/ArockiaDass-123/fake-product-detection-using-blackChain-tecnology",
+      "live": "",
+      "image": "/assets/projects/blockchain-security.png",
+      "tech": [
+        "JavaScript",
+        "Blockchain",
+        "Web3",
+        "Smart Contracts"
+      ],
+      "shortDesc": "Decentralized verification system validating supply chain product authenticity.",
+      "desc": "Leverages distributed ledger records to verify product provenance and eliminate counterfeit merchandise in supply chains."
+    },
+    {
+      "id": 24,
+      "title": "AI Text-to-Voice Converter",
+      "link": "https://github.com/ArockiaDass-123/ai-text-into-voice-converter",
+      "github": "https://github.com/ArockiaDass-123/ai-text-into-voice-converter",
+      "live": "",
+      "image": "/assets/projects/voice-converter.png",
+      "tech": [
+        "TypeScript",
+        "Web Speech API",
+        "AI Audio",
+        "React"
+      ],
+      "shortDesc": "Text-to-speech voice synthesis tool with adjustable pitch, speed, and accents.",
+      "desc": "Converts text scripts into natural spoken audio with dynamic voice selection and audio playback controls."
     }
   ],
   "publications": [
@@ -140,7 +578,17 @@
     }
   ],
   "socials": [
-    { "label": "GitHub", "href": "https://github.com/ArockiaDass-123" },
-    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/arockia-dass-j-701153337" }
+    {
+      "label": "GitHub",
+      "href": "https://github.com/ArockiaDass-123"
+    },
+    {
+      "label": "LinkedIn",
+      "href": "https://www.linkedin.com/in/arockia-dass-j-701153337"
+    },
+    {
+      "label": "Instagram",
+      "href": "https://www.instagram.com/vini_the_lonely_boy/"
+    }
   ]
 }

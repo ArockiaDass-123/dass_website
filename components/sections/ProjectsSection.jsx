@@ -1,206 +1,376 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import Image from 'next/image'
-import { gsap, ScrollTrigger } from '@/lib/gsap'
+import { FaGithub } from 'react-icons/fa'
+import { FiArrowUpRight, FiExternalLink, FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import profile from '@/data/profile.json'
 import styles from '@/styles/sections/ProjectsSection.module.css'
 
 const PROJECTS = profile.projects
 
 export default function ProjectsSection() {
-  const sectionRef  = useRef(null)
-  const trackRef    = useRef(null)
-  const contentRefs = useRef([])
-  const bgRefs      = useRef([])
-  const counterRef  = useRef(null)
-  const progressRef = useRef(null)
-  const [slideIdx, setSlideIdx] = useState(0)
+  const sectionRef   = useRef(null)
+  const trackRef     = useRef(null)
+  const viewportRef  = useRef(null)
 
-  useEffect(() => {
-    const section = sectionRef.current
-    const track   = trackRef.current
-    if (!section || !track) return
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [cardsPerView, setCardsPerView] = useState(3)
+  const [isDragging, setIsDragging]     = useState(false)
+  const dragStartX   = useRef(0)
+  const dragCurrentX  = useRef(0)
+  const touchStartY  = useRef(0)
+  const touchStartX  = useRef(0)
 
-    const scroller = document.querySelector('main')
-    if (!scroller) return
-    const n = PROJECTS.length
-    contentRefs.current = contentRefs.current.slice(0, n)
-    bgRefs.current      = bgRefs.current.slice(0, n)
-
-    // Slides 2+ hidden initially
-    contentRefs.current.forEach((el, i) => {
-      if (el && i > 0) gsap.set(el, { opacity: 0, y: 30 })
-    })
-
-    const tl = gsap.timeline({ paused: true })
-
-    // Horizontal slide - xPercent is viewport-independent
-    tl.to(track, {
-      xPercent: -((n - 1) / n * 100),
-      ease: 'none',
-      duration: n - 1,
-    }, 0)
-
-    for (let i = 0; i < n - 1; i++) {
-      const curr   = contentRefs.current[i]
-      const next   = contentRefs.current[i + 1]
-      const nextBg = bgRefs.current[i + 1]
-
-      if (curr) {
-        tl.to(curr, {
-          opacity: 0, y: -40, filter: 'blur(6px)',
-          duration: 0.2, ease: 'power2.in',
-        }, i + 0.30)
-      }
-
-      if (nextBg) {
-        tl.fromTo(nextBg,
-          { scale: 1.04 },
-          { scale: 1.0, duration: 1.0, ease: 'power2.out' },
-          i
-        )
-      }
-
-      if (next) {
-        tl.set(next, { opacity: 1, y: 0 }, i + 0.44)
-
-        const meta  = next.querySelector(`.${styles.meta}`)
-        const title = next.querySelector(`.${styles.title}`)
-        const sub   = next.querySelector(`.${styles.subtitle}`)
-        const desc  = next.querySelector(`.${styles.desc}`)
-        const tags  = next.querySelectorAll(`.${styles.tag}`)
-        const btn   = next.querySelector(`.${styles.liveBtn}`)
-
-        if (meta)  tl.fromTo(meta,  { x: -10, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: 'power2.out' }, i + 0.45)
-        if (title) tl.fromTo(title, { opacity: 0, y: 20 },  { opacity: 1, y: 0, duration: 0.45, ease: 'expo.out'   }, i + 0.48)
-        if (sub)   tl.fromTo(sub,   { y: 12, opacity: 0 },  { y: 0, opacity: 1, duration: 0.30, ease: 'power2.out' }, i + 0.54)
-        if (desc)  tl.fromTo(desc,  { y: 10, opacity: 0 },  { y: 0, opacity: 1, duration: 0.35, ease: 'power2.out' }, i + 0.58)
-        if (tags.length) {
-          tl.fromTo(tags,  { y: 6, opacity: 0 },  { y: 0, opacity: 1, duration: 0.25, ease: 'power2.out', stagger: 0.03 }, i + 0.65)
-        }
-        if (btn)   tl.fromTo(btn,   { y: 8, opacity: 0 },  { y: 0, opacity: 1, duration: 0.30, ease: 'power2.out' }, i + 0.72)
-      }
+  // Determine cards per view based on viewport width
+  const updateLayout = useCallback(() => {
+    if (typeof window === 'undefined') return
+    const w = window.innerWidth
+    let cpv = 3
+    if (w < 680) {
+      cpv = 1
+    } else if (w < 1120) {
+      cpv = 2
+    } else {
+      cpv = 3
     }
-
-    const st = ScrollTrigger.create({
-      trigger:  section,
-      scroller,
-      start:    'top top',
-      end:      () => `+=${(n - 1) * window.innerHeight}`,
-      onUpdate: (self) => {
-        tl.progress(self.progress)
-
-        const activeIdx = Math.round(self.progress * (n - 1))
-        setSlideIdx(prev => prev !== activeIdx ? activeIdx : prev)
-
-        if (progressRef.current) {
-          gsap.set(progressRef.current, {
-            scaleX: self.progress, transformOrigin: 'left center', overwrite: true,
-          })
-        }
-
-        if (counterRef.current) counterRef.current.textContent = `0${activeIdx + 1}`
-      },
+    setCardsPerView(cpv)
+    setCurrentIndex(prev => {
+      const max = Math.max(0, PROJECTS.length - cpv)
+      return Math.min(prev, max)
     })
-
-    return () => st.kill()
   }, [])
 
+  useEffect(() => {
+    updateLayout()
+    window.addEventListener('resize', updateLayout)
+    return () => window.removeEventListener('resize', updateLayout)
+  }, [updateLayout])
+
+  const maxIndex = Math.max(0, PROJECTS.length - cardsPerView)
+  const canPrev  = currentIndex > 0
+  const canNext  = currentIndex < maxIndex
+
+  const handlePrev = useCallback(() => {
+    setCurrentIndex(i => Math.max(0, i - 1))
+  }, [])
+
+  const handleNext = useCallback(() => {
+    setCurrentIndex(i => Math.min(maxIndex, i + 1))
+  }, [maxIndex])
+
+  const goToSlide = useCallback((idx) => {
+    setCurrentIndex(Math.max(0, Math.min(maxIndex, idx)))
+  }, [maxIndex])
+
+  // Keyboard navigation
+  const handleKeyDown = useCallback((e) => {
+    if (e.key === 'ArrowLeft') {
+      handlePrev()
+    } else if (e.key === 'ArrowRight') {
+      handleNext()
+    }
+  }, [handlePrev, handleNext])
+
+  // Touch swipe support (Mobile)
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX
+    touchStartY.current = e.touches[0].clientY
+  }
+
+  const handleTouchEnd = (e) => {
+    const diffX = touchStartX.current - e.changedTouches[0].clientX
+    const diffY = touchStartY.current - e.changedTouches[0].clientY
+
+    // Prioritize horizontal swipe if horizontal displacement > vertical
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
+      if (diffX > 0 && canNext) {
+        handleNext()
+      } else if (diffX < 0 && canPrev) {
+        handlePrev()
+      }
+    }
+  }
+
+  // Mouse drag support (Desktop)
+  const handleMouseDown = (e) => {
+    setIsDragging(true)
+    dragStartX.current = e.clientX
+    dragCurrentX.current = e.clientX
+  }
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return
+    dragCurrentX.current = e.clientX
+  }
+
+  const handleMouseUp = () => {
+    if (!isDragging) return
+    const diff = dragStartX.current - dragCurrentX.current
+    if (diff > 45 && canNext) {
+      handleNext()
+    } else if (diff < -45 && canPrev) {
+      handlePrev()
+    }
+    setIsDragging(false)
+  }
+
+  const handleMouseLeave = () => {
+    if (isDragging) setIsDragging(false)
+  }
+
+  // Calculate slide offset percentage
+  // Each card width = (100% - (cardsPerView - 1) * gap) / cardsPerView
+  const gapPx = 20
+  const transformStyle = {
+    transform: `translateX(calc(-${currentIndex} * (${100 / cardsPerView}% + ${gapPx / cardsPerView}px)))`,
+  }
+
+  const progressPercent = maxIndex > 0 ? (currentIndex / maxIndex) * 100 : 100
+
   return (
-    <div style={{ height: `${PROJECTS.length * 100}vh` }}>
-      <section ref={sectionRef} className={styles.section}>
+    <section
+      id="projects"
+      ref={sectionRef}
+      className={styles.section}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      aria-label="Featured Projects Carousel"
+    >
+      {/* Background ambient accents */}
+      <div className={styles.bgGlowTop} aria-hidden />
+      <div className={styles.bgWatermark} aria-hidden>PROJECTS</div>
 
-        {/* Top bar */}
-        <div className={styles.topBar}>
-          <span className={styles.sectionLabel}>Featured Work</span>
-          <div className={styles.counter}>
-            <span ref={counterRef} className={styles.cCur}>01</span>
-            <span className={styles.cSep}> / </span>
-            <span className={styles.cTot}>0{PROJECTS.length}</span>
-          </div>
-        </div>
-
-        {/* Horizontal track */}
-        <div
-          ref={trackRef}
-          className={styles.track}
-          style={{ width: `${PROJECTS.length * 100}vw` }}
-        >
-          {PROJECTS.map((proj, i) => (
-            <div key={proj.id} className={styles.slide}>
-
-              <div
-                ref={el => { bgRefs.current[i] = el }}
-                className={styles.slideBg}
-              >
-                {proj.image ? (
-                  <>
-                    <Image
-                      src={proj.image}
-                      alt={proj.title}
-                      fill
-                      quality={100}
-                      sizes="100vw"
-                      className={styles.slideImg}
-                      priority={i === 0}
-                    />
-                    <div className={styles.slideOverlayLeft}   aria-hidden />
-                    <div className={styles.slideOverlayBottom} aria-hidden />
-                    <div className={styles.slideVignette}      aria-hidden />
-                  </>
-                ) : (
-                  <div className={styles.slidePlaceholder} aria-hidden />
-                )}
-              </div>
-
-              <span className={styles.slideNum} aria-hidden>0{i + 1}</span>
-
-              <div
-                ref={el => { contentRefs.current[i] = el }}
-                className={styles.slideContent}
-              >
-                <div className={styles.slideLeft}>
-                  <div className={styles.meta}>
-                    <span className={styles.typeTag}>{proj.type}</span>
-                  </div>
-                  <h2 className={styles.title}>{proj.title}</h2>
-                  <p  className={styles.subtitle}>{proj.subtitle}</p>
-                  <a
-                    href={proj.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.liveBtn}
-                  >
-                    <span>Live Demo</span>
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
-                      <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </a>
-                </div>
-
-                <div className={styles.slideRight}>
-                  <p className={styles.desc}>{proj.desc}</p>
-                  <div className={styles.stack}>
-                    {proj.tech.map(t => (
-                      <span key={t} className={styles.tag}>{t}</span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
+      <div className={styles.container}>
+        {/* Header bar */}
+        <div className={styles.header}>
+          <div className={styles.headerLeft}>
+            <div className={styles.eyebrowWrap}>
+              <span className={styles.eyebrowDot} />
+              <span className={styles.eyebrow}>Featured Work</span>
             </div>
-          ))}
-        </div>
+            <h2 className={styles.title}>
+              Crafted <span className={styles.titleAccent}>Projects</span>
+            </h2>
+            <p className={styles.subtitle}>
+              Full-stack applications, modern UI platforms, and practical data & AI solutions.
+            </p>
+          </div>
 
-        {/* Progress bar */}
-        <div className={styles.bottomUI}>
-          <div className={styles.progressTrack}>
-            <div ref={progressRef} className={styles.progressBar} />
+          {/* Navigation Controls */}
+          <div className={styles.headerControls}>
+            <a
+              href="https://github.com/ArockiaDass-123?tab=repositories"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.githubProfileLink}
+              title="View all repositories on GitHub"
+            >
+              <FaGithub size={14} />
+              <span>GitHub Repos</span>
+            </a>
+
+            <div className={styles.counter}>
+              <span className={styles.counterCurrent}>
+                {String(currentIndex + 1).padStart(2, '0')}
+              </span>
+              <span className={styles.counterDivider}>/</span>
+              <span className={styles.counterTotal}>
+                {String(PROJECTS.length).padStart(2, '0')}
+              </span>
+            </div>
+
+            <div className={styles.navButtons}>
+              <button
+                type="button"
+                onClick={handlePrev}
+                disabled={!canPrev}
+                className={styles.arrowBtn}
+                aria-label="Previous project"
+              >
+                <FiChevronLeft size={18} />
+              </button>
+              <button
+                type="button"
+                onClick={handleNext}
+                disabled={!canNext}
+                className={styles.arrowBtn}
+                aria-label="Next project"
+              >
+                <FiChevronRight size={18} />
+              </button>
+            </div>
           </div>
         </div>
 
-      </section>
-    </div>
+        {/* Carousel viewport */}
+        <div
+          ref={viewportRef}
+          className={`${styles.viewport} ${isDragging ? styles.isDragging : ''}`}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div
+            ref={trackRef}
+            className={styles.track}
+            style={transformStyle}
+          >
+            {PROJECTS.map((proj, i) => {
+              const primaryLink = proj.live || proj.link || proj.github
+              const isGithub = (proj.github || proj.link?.includes('github.com'))
+              const githubUrl = proj.github || (proj.link?.includes('github.com') ? proj.link : null)
+              const liveUrl   = proj.live || (!proj.link?.includes('github.com') ? proj.link : null)
+
+              return (
+                <article
+                  key={proj.id}
+                  className={styles.card}
+                  style={{
+                    flex: `0 0 calc(${100 / cardsPerView}% - ${(gapPx * (cardsPerView - 1)) / cardsPerView}px)`,
+                  }}
+                >
+                  {/* Card Thumbnail */}
+                  <div className={styles.cardThumb}>
+                    {proj.image ? (
+                      <Image
+                        src={proj.image}
+                        alt={proj.title}
+                        fill
+                        sizes="(max-width: 680px) 90vw, (max-width: 1120px) 45vw, 30vw"
+                        className={styles.cardImg}
+                        priority={i < 2}
+                      />
+                    ) : (
+                      <div className={styles.placeholderImg}>
+                        <span>{proj.title[0]}</span>
+                      </div>
+                    )}
+                    <div className={styles.thumbOverlay} aria-hidden />
+                    <span className={styles.cardBadge}>0{i + 1}</span>
+                  </div>
+
+                  {/* Card Body */}
+                  <div className={styles.cardBody}>
+                    <h3 className={styles.cardTitle} title={proj.title}>
+                      {proj.title}
+                    </h3>
+
+                    <p className={styles.cardDesc}>
+                      {proj.shortDesc || proj.desc}
+                    </p>
+
+                    {/* Tech stack tags */}
+                    <div className={styles.tagList}>
+                      {proj.tech.slice(0, 4).map((t) => (
+                        <span key={t} className={styles.tag}>{t}</span>
+                      ))}
+                      {proj.tech.length > 4 && (
+                        <span className={styles.tagMore}>+{proj.tech.length - 4}</span>
+                      )}
+                    </div>
+
+                    {/* Card Actions */}
+                    <div className={styles.cardFooter}>
+                      <div className={styles.iconLinks}>
+                        {githubUrl && (
+                          <a
+                            href={githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.iconBtn}
+                            title="View source on GitHub"
+                            aria-label={`GitHub source code for ${proj.title}`}
+                          >
+                            <FaGithub size={15} />
+                          </a>
+                        )}
+                        {liveUrl && (
+                          <a
+                            href={liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.iconBtn}
+                            title="Open live demo"
+                            aria-label={`Live demo for ${proj.title}`}
+                          >
+                            <FiExternalLink size={15} />
+                          </a>
+                        )}
+                      </div>
+
+                      {primaryLink && (
+                        <a
+                          href={primaryLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.viewBtn}
+                          aria-label={`View project details for ${proj.title}`}
+                        >
+                          <span>View Project</span>
+                          <FiArrowUpRight size={13} className={styles.viewArrow} />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </article>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* Carousel Bottom Indicator / Pagination */}
+        <div className={styles.bottomBar}>
+          <div className={styles.paginationDots}>
+            {(() => {
+              const totalDots = maxIndex + 1
+              if (totalDots <= 8) {
+                return Array.from({ length: totalDots }).map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => goToSlide(idx)}
+                    className={`${styles.dot} ${idx === currentIndex ? styles.activeDot : ''}`}
+                    aria-label={`Go to slide ${idx + 1}`}
+                  />
+                ))
+              }
+              const windowSize = 7
+              let start = Math.max(0, currentIndex - Math.floor(windowSize / 2))
+              let end = start + windowSize
+              if (end > totalDots) {
+                end = totalDots
+                start = Math.max(0, end - windowSize)
+              }
+              const visibleIndices = []
+              for (let i = start; i < end; i++) visibleIndices.push(i)
+              return visibleIndices.map((idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => goToSlide(idx)}
+                  className={`${styles.dot} ${idx === currentIndex ? styles.activeDot : ''}`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))
+            })()}
+          </div>
+
+          <div className={styles.progressBarTrack} aria-hidden>
+            <div
+              className={styles.progressBarFill}
+              style={{ width: `${progressPercent}%` }}
+            />
+          </div>
+
+          <span className={styles.swipeHint}>
+            Swipe or use arrows to navigate
+          </span>
+        </div>
+      </div>
+    </section>
   )
 }

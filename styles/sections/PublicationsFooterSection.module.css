@@ -58,9 +58,13 @@
 /* ── Mobile background image (footer phase - mobile only) ── */
 .mobileFooterBg {
   display: none;
+  position: absolute;
+  inset: 0;
 }
 .mobileDarkOverlay {
   display: none;
+  position: absolute;
+  inset: 0;
 }
 @media (max-width: 767px) {
   .mobileFooterBg {

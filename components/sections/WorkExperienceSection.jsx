@@ -112,7 +112,7 @@ export default function WorkExperienceSection() {
 
       <div className={styles.header}>
         <span className={styles.label}>Work Experience</span>
-        <span className={styles.labelRight}>0{EXPS.length} Companies</span>
+        <span className={styles.labelRight}>0{EXPS.length} Roles</span>
       </div>
 
       <div className={styles.timeline}>
@@ -143,7 +143,9 @@ export default function WorkExperienceSection() {
                   className={styles.card}
                 >
                   <div className={styles.cardHead}>
-                    <span className={styles.period}>{exp.period} - {exp.periodEnd}</span>
+                    <span className={styles.period}>
+                      {exp.periodEnd ? `${exp.period} — ${exp.periodEnd}` : exp.period}
+                    </span>
                     <span className={styles.typeTag}>{exp.type}</span>
                     {exp.location && <span className={styles.location}>{exp.location}</span>}
                   </div>

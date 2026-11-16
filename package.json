@@ -10,9 +10,9 @@
     "email": "arockiadassvinith@gmail.com"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "optimize:images": "node scripts/optimize-images.js",
-    "build": "next build && node scripts/postbuild.js",
+    "build": "next build --webpack && node scripts/postbuild.js",
     "start": "next start",
     "render-deploy": "node scripts/render-deploy.js",
     "lint": "eslint"

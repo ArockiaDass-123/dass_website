@@ -12,13 +12,13 @@ import profile from '@/data/profile.json'
 import styles from '@/styles/ui/Navbar.module.css'
 import { FaBars, FaTimes } from 'react-icons/fa'
 
-// idx matches snap position in page.js (0=video,1=hero,2=about,3-4=projects,5=work-exp,6=publications,7=footer)
+// idx matches snap position in page.js (0=video,1=hero,2=about,3=projects,4=work-exp,5=publications,7=footer)
 const NAV_ITEMS = [
   { label: 'Home',         idx: 0 },
   { label: 'About',        idx: 2 },
   { label: 'Work',         idx: 3 },
-  { label: 'Experience',   idx: 5 },
-  { label: 'Impact',       idx: 6 },
+  { label: 'Experience',   idx: 4 },
+  { label: 'Impact',       idx: 5 },
   { label: 'Contact',      idx: 7 },
 ]
 
@@ -103,16 +103,22 @@ export default function Navbar() {
                   onClick={() => {
                     const scroller = document.querySelector('main')
                     if (scroller) {
-                        const key = label.toLowerCase()
-                        let target
-                        if (key === 'contact') {
-                          target = Math.max(0, scroller.scrollHeight - window.innerHeight)
-                        } else if (key === 'experience') {
-                          const el = document.getElementById('work-experience')
-                          target = el ? el.offsetTop : idx * window.innerHeight
-                        } else {
-                          target = idx * window.innerHeight
-                        }
+                      const key = label.toLowerCase()
+                      let target
+                      if (key === 'contact') {
+                        target = Math.max(0, scroller.scrollHeight - window.innerHeight)
+                      } else if (key === 'experience') {
+                        const el = document.getElementById('work-experience')
+                        target = el ? el.offsetTop : idx * window.innerHeight
+                      } else if (key === 'work' || key === 'projects') {
+                        const el = document.getElementById('projects')
+                        target = el ? el.offsetTop : idx * window.innerHeight
+                      } else if (key === 'about') {
+                        const el = document.getElementById('about')
+                        target = el ? el.offsetTop : idx * window.innerHeight
+                      } else {
+                        target = idx * window.innerHeight
+                      }
                       gsap.to(scroller, {
                         scrollTop: target,
                         duration: 1.0,
@@ -160,6 +166,12 @@ export default function Navbar() {
                     target = Math.max(0, scroller.scrollHeight - window.innerHeight)
                   } else if (key === 'experience') {
                     const el = document.getElementById('work-experience')
+                    target = el ? el.offsetTop : idx * window.innerHeight
+                  } else if (key === 'work' || key === 'projects') {
+                    const el = document.getElementById('projects')
+                    target = el ? el.offsetTop : idx * window.innerHeight
+                  } else if (key === 'about') {
+                    const el = document.getElementById('about')
                     target = el ? el.offsetTop : idx * window.innerHeight
                   } else {
                     target = idx * window.innerHeight
