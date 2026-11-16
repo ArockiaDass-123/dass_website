@@ -27,37 +27,42 @@ const dancing = Dancing_Script({
 });
 
 const description =
-  'Aspiring full-stack developer with hands-on MERN projects, SQL/Python data analysis experience, and practical exposure to AI/ML and cybersecurity simulations.';
+  'Arockia Dass is a Full-stack Developer and MERN specialist building scalable web applications, modern interfaces, and AI/data-driven solutions. Explore projects, experience, and technical portfolio.';
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Arockia Dass | Full-stack Developer',
+    default: 'Arockia Dass | Full-stack Developer & MERN Specialist',
     template: '%s | Arockia Dass',
   },
   description,
   keywords: [
-    'Arockia Dass J',
     'Arockia Dass',
+    'Arockia Dass J',
     'Full-stack Developer',
     'MERN Developer',
     'React.js Developer',
     'Node.js Developer',
+    'Full Stack Web Developer Portfolio',
+    'Next.js Portfolio',
     'AI & Data Analytics',
-    'Cybersecurity Simulation',
-    'Web Development Portfolio',
+    'JavaScript Developer India',
+    'Frontend Developer',
+    'Backend Developer',
     'Kodaikanal',
     'Tamil Nadu',
     'India',
   ],
   authors: [{ name: 'Arockia Dass', url: SITE_URL }],
   creator: 'Arockia Dass',
+  publisher: 'Arockia Dass',
   openGraph: {
     type: 'website',
     locale: 'en_IN',
     url: SITE_URL,
-    
+    title: 'Arockia Dass | Full-stack Developer & MERN Specialist',
     description,
+    siteName: 'Arockia Dass Portfolio',
     images: [
       {
         url: '/opengraph-image',
@@ -69,9 +74,10 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Arockia Dass | Full-stack Developer',
+    title: 'Arockia Dass | Full-stack Developer & MERN Specialist',
     description,
     images: ['/opengraph-image'],
+    creator: '@ArockiaDass',
   },
   robots: {
     index: true,
@@ -79,6 +85,7 @@ export const metadata = {
     googleBot: {
       index: true,
       follow: true,
+      'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
@@ -117,14 +124,53 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'Person',
-              name: 'Arockia Dass',
-              url: SITE_URL,
-              email: 'arockiadassvinith@gmail.com',
-              jobTitle: 'Full-stack Developer',
-              sameAs: [
-                'https://github.com/ArockiaDass-123',
-                'https://www.linkedin.com/in/arockia-dass-j-701153337/',
+              '@graph': [
+                {
+                  '@type': 'WebSite',
+                  '@id': `${SITE_URL}/#website`,
+                  url: SITE_URL,
+                  name: 'Arockia Dass | Full-stack Developer Portfolio',
+                  description: description,
+                  inLanguage: 'en-IN',
+                  author: {
+                    '@id': `${SITE_URL}/#person`,
+                  },
+                },
+                {
+                  '@type': 'Person',
+                  '@id': `${SITE_URL}/#person`,
+                  name: 'Arockia Dass',
+                  alternateName: 'Arockia Dass J',
+                  url: SITE_URL,
+                  image: `${SITE_URL}/assets/vinith.jpg`,
+                  email: 'arockiadassvinith@gmail.com',
+                  jobTitle: 'Full-stack Developer',
+                  description: description,
+                  address: {
+                    '@type': 'PostalAddress',
+                    addressLocality: 'Kodaikanal',
+                    addressRegion: 'Tamil Nadu',
+                    addressCountry: 'IN',
+                  },
+                  knowsAbout: [
+                    'Full-stack Web Development',
+                    'MERN Stack',
+                    'React.js',
+                    'Next.js',
+                    'Node.js',
+                    'Express.js',
+                    'MongoDB',
+                    'JavaScript',
+                    'Python',
+                    'SQL',
+                    'Artificial Intelligence',
+                    'Data Analytics'
+                  ],
+                  sameAs: [
+                    'https://github.com/ArockiaDass-123',
+                    'https://www.linkedin.com/in/arockia-dass-j-701153337/',
+                  ],
+                },
               ],
             }),
           }}

@@ -148,7 +148,7 @@ export default function AboutSection() {
       <div ref={contentRef} className={styles.content}>
 
         {/* Who I Am - label + infinite marquee */}
-        <p className={styles.whoLabel}>Who I Am</p>
+        <h2 className={styles.whoLabel}>Who I Am</h2>
         <div className={styles.marqueeWrap}>
           <div className={styles.marqueeTrack}>
             {[...WHO_ITEMS, ...WHO_ITEMS].map((item, i) => (

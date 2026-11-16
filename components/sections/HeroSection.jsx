@@ -77,7 +77,7 @@ export default function HeroSection() {
 
     const fadeY = [
       greetRef.current, roleRef.current,
-      firstName.current, lastName.current,
+      firstName.current,
       pillsRef.current, ctaBtnRef.current, statsRef.current,
     ].filter(Boolean)
 
@@ -86,7 +86,6 @@ export default function HeroSection() {
      tl.to(greetRef.current,       { opacity: 1, y: 0, duration: 0.5,  ease: 'power2.out' })
       .to(roleRef.current,        { opacity: 1, y: 0, duration: 0.5,  ease: 'power2.out' }, '-=0.3')
       .to(firstName.current,      { opacity: 1, y: 0, duration: 0.6,  ease: 'power2.out' }, '-=0.2')
-      .to(lastName.current,       { opacity: 1, y: 0, duration: 0.6,  ease: 'power2.out' }, '-=0.4')
       .to(pillsRef.current,       { opacity: 1, y: 0, duration: 0.5,  ease: 'power2.out' }, '-=0.3')
       .to(ctaBtnRef.current,      { opacity: 1, y: 0, duration: 0.4,  ease: 'power2.out' }, '-=0.2')
       .to(statsRef.current,       { opacity: 1, y: 0, duration: 0.5,  ease: 'power2.out' }, '-=0.2')
@@ -111,7 +110,7 @@ export default function HeroSection() {
 
       {/* Background image (replaces HeroBackground) */}
       <div className={styles.heroBg}>
-        <Image src="/assets/back.png" alt="background" fill priority className={styles.heroBgImg} />
+        <Image src="/assets/back.png" alt="Arockia Dass portfolio background artwork" fill priority className={styles.heroBgImg} />
       </div>
 
 
@@ -153,10 +152,10 @@ export default function HeroSection() {
         </div>
 
         {/* Stacked Name */}
-        <div className={styles.nameBlock}>
-          <p ref={firstName} className={styles.name}>{profile.name.first}</p>
-          <p ref={lastName}  className={styles.name}>{profile.name.last}</p>
-        </div>
+        <h1 ref={firstName} className={styles.nameBlock}>
+          <span className={styles.name}>{profile.name.first}</span>
+          <span className={styles.name}>{profile.name.last}</span>
+        </h1>
 
         {/* Tag Pills */}
         <div ref={pillsRef} className={styles.pills}>

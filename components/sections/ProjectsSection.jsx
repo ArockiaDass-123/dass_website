@@ -238,7 +238,7 @@ export default function ProjectsSection() {
                     {proj.image ? (
                       <Image
                         src={proj.image}
-                        alt={proj.title}
+                        alt={`${proj.title} - ${proj.desc || 'Full-stack application project'}`}
                         fill
                         sizes="(max-width: 680px) 90vw, (max-width: 1120px) 45vw, 30vw"
                         className={styles.cardImg}

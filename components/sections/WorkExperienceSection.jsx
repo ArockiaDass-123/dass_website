@@ -111,7 +111,7 @@ export default function WorkExperienceSection() {
       </div>
 
       <div className={styles.header}>
-        <span className={styles.label}>Work Experience</span>
+        <h2 className={styles.label}>Work Experience</h2>
         <span className={styles.labelRight}>0{EXPS.length} Roles</span>
       </div>
 
@@ -149,7 +149,7 @@ export default function WorkExperienceSection() {
                     <span className={styles.typeTag}>{exp.type}</span>
                     {exp.location && <span className={styles.location}>{exp.location}</span>}
                   </div>
-                  <h2 className={styles.company}>{exp.company}</h2>
+                  <h3 className={styles.company}>{exp.company}</h3>
                   <p  className={styles.role}>{exp.role}</p>
                   <ul
                     ref={el => { bulletListRefs.current[i] = el }}
