@@ -77,7 +77,7 @@ export default function AboutSection() {
 
       let i = 0
       intervalRef.current = setInterval(() => {
-        i = Math.min(i + 6, BIO.length)
+        i = Math.min(i + 8, BIO.length)
         setTyped(i)
         if (i >= BIO.length) {
           clearInterval(intervalRef.current)
