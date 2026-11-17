@@ -27,18 +27,26 @@ const dancing = Dancing_Script({
 });
 
 const description =
-  'Arockia Dass is a Full-stack Developer and MERN specialist building scalable web applications, modern interfaces, and AI/data-driven solutions. Explore projects, experience, and technical portfolio.';
+  'Arockia Dass is a Freelancer and Full-stack Developer in Kodaikanal specializing in MERN stack, AI/ML projects, and B.Sc/MCA college projects. Explore production web apps, ML models, and development portfolio.';
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Arockia Dass | Full-stack Developer & MERN Specialist',
+    default: 'Arockia Dass | Freelancer in Kodaikanal | AI ML & College Projects',
     template: '%s | Arockia Dass',
   },
   description,
   keywords: [
+    'arockiadass',
     'Arockia Dass',
     'Arockia Dass J',
+    'freelancer in kodaikanal',
+    'freelance web developer kodaikanal',
+    'ai ml project',
+    'ai ml projects',
+    'bsc college project',
+    'mca college project',
+    'college final year project',
     'Full-stack Developer',
     'MERN Developer',
     'React.js Developer',
@@ -47,8 +55,6 @@ export const metadata = {
     'Next.js Portfolio',
     'AI & Data Analytics',
     'JavaScript Developer India',
-    'Frontend Developer',
-    'Backend Developer',
     'Kodaikanal',
     'Tamil Nadu',
     'India',
@@ -60,7 +66,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: SITE_URL,
-    title: 'Arockia Dass | Full-stack Developer & MERN Specialist',
+    title: 'Arockia Dass | Freelancer in Kodaikanal | AI ML & College Projects',
     description,
     siteName: 'Arockia Dass Portfolio',
     images: [
@@ -68,13 +74,13 @@ export const metadata = {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'Arockia Dass | Full-stack Developer Portfolio',
+        alt: 'Arockia Dass | Freelancer in Kodaikanal | AI ML & College Projects',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Arockia Dass | Full-stack Developer & MERN Specialist',
+    title: 'Arockia Dass | Freelancer in Kodaikanal | AI ML & College Projects',
     description,
     images: ['/opengraph-image'],
     creator: '@ArockiaDass',
@@ -153,6 +159,10 @@ export default function RootLayout({ children }) {
                     addressCountry: 'IN',
                   },
                   knowsAbout: [
+                    'Freelancer in Kodaikanal',
+                    'AI ML Projects',
+                    'B.Sc Computer Science College Projects',
+                    'MCA Final Year Projects',
                     'Full-stack Web Development',
                     'MERN Stack',
                     'React.js',
