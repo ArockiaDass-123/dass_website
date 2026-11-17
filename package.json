@@ -12,6 +12,7 @@
   "scripts": {
     "dev": "next dev --webpack",
     "optimize:images": "node scripts/optimize-images.js",
+    "prebuild": "node -e \"const fs=require('fs'); ['public/_next', 'public/_not-found', 'public/index.html', 'public/404.html'].forEach(p => fs.rmSync(p, {recursive: true, force: true}));\"",
     "build": "next build --webpack && node scripts/postbuild.js",
     "start": "next start",
     "render-deploy": "node scripts/render-deploy.js",
