@@ -99,6 +99,9 @@ export const metadata = {
   alternates: {
     canonical: SITE_URL,
   },
+  verification: {
+    google: '2ojO_Y2tZ_bmaAJ7M9RnjdSYuYovdb8SfVq0wFk74Ac',
+  },
   icons: {
     icon: [
       { url: '/favicons/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
