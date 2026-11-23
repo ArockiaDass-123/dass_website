@@ -48,3 +48,6 @@ next-env.d.ts
 
 # internal dev planning docs
 docs/superpowers
+
+# nested mobile ide repo
+ide-app/

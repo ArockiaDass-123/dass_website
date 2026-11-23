@@ -153,7 +153,8 @@ export default function RootLayout({ children }) {
                   url: SITE_URL,
                   image: `${SITE_URL}/assets/vinith.jpg`,
                   email: 'arockiadassvinith@gmail.com',
-                  jobTitle: 'Full-stack Developer',
+                  telephone: '+91-6380835701',
+                  jobTitle: 'Freelance Full-stack Developer',
                   description: description,
                   address: {
                     '@type': 'PostalAddress',
@@ -163,6 +164,7 @@ export default function RootLayout({ children }) {
                   },
                   knowsAbout: [
                     'Freelancer in Kodaikanal',
+                    'Freelance Web Developer Kodaikanal',
                     'AI ML Projects',
                     'B.Sc Computer Science College Projects',
                     'MCA Final Year Projects',
@@ -183,6 +185,72 @@ export default function RootLayout({ children }) {
                     'https://github.com/ArockiaDass-123',
                     'https://www.linkedin.com/in/arockia-dass-j-701153337/',
                   ],
+                },
+                {
+                  '@type': 'ProfessionalService',
+                  '@id': `${SITE_URL}/#service`,
+                  name: 'Arockia Dass - Freelancer in Kodaikanal',
+                  url: SITE_URL,
+                  image: `${SITE_URL}/assets/vinith.jpg`,
+                  telephone: '+91-6380835701',
+                  email: 'arockiadassvinith@gmail.com',
+                  priceRange: '₹₹',
+                  description: description,
+                  address: {
+                    '@type': 'PostalAddress',
+                    addressLocality: 'Kodaikanal',
+                    addressRegion: 'Tamil Nadu',
+                    addressCountry: 'IN',
+                  },
+                  geo: {
+                    '@type': 'GeoCoordinates',
+                    latitude: 10.2381,
+                    longitude: 77.4892,
+                  },
+                  areaServed: [
+                    {
+                      '@type': 'City',
+                      name: 'Kodaikanal',
+                    },
+                    {
+                      '@type': 'State',
+                      name: 'Tamil Nadu',
+                    },
+                    {
+                      '@type': 'Country',
+                      name: 'India',
+                    },
+                  ],
+                  hasOfferCatalog: {
+                    '@type': 'OfferCatalog',
+                    name: 'Freelance & Development Services',
+                    itemListElement: [
+                      {
+                        '@type': 'Offer',
+                        itemOffered: {
+                          '@type': 'Service',
+                          name: 'Freelance Web Development in Kodaikanal',
+                          description: 'Custom responsive MERN stack and Next.js web application development.',
+                        },
+                      },
+                      {
+                        '@type': 'Offer',
+                        itemOffered: {
+                          '@type': 'Service',
+                          name: 'B.Sc & MCA College Projects in Kodaikanal',
+                          description: 'Final year computer science and MCA academic project development and guidance.',
+                        },
+                      },
+                      {
+                        '@type': 'Offer',
+                        itemOffered: {
+                          '@type': 'Service',
+                          name: 'AI & Machine Learning Solutions',
+                          description: 'Machine learning, data analytics, and intelligent software automation.',
+                        },
+                      },
+                    ],
+                  },
                 },
               ],
             }),
